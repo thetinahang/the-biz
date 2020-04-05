@@ -15,6 +15,10 @@ class QueriesController < ApplicationController
   # GET /queries/new
   def new
     @query = Query.new
+    3.times do 
+      @term = @query.terms.build
+    end
+    @all_terms = []
   end
 
   # GET /queries/1/edit

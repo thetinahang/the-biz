@@ -3,6 +3,11 @@
 <p>
   <strong>Name:</strong>
   <%= @query.name %>
+  <ol>
+	  <% @query.terms.each do |term|%>
+	  	<li>term.name</li>
+	  <% end %>
+  </ol>
 </p>
 
 <%= link_to 'Edit', edit_query_path(@query) %> |
