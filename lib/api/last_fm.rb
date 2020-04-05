@@ -4,12 +4,10 @@ module Api
 
     include HTTParty
 
-    def get_response
+    def self.get_response
       response = HTTParty.get(build_auth_url)
       response.body
     end
-
-    private
 
     def build_auth_url
       @auth_url ||= lastfm_auth_url + api_key
