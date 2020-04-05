@@ -1,8 +1,7 @@
-require 'lib/api'
-
 module Api
 
   class LastFm
+
     include HTTParty
 
     def get_response
