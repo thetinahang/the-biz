@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_031045) do
+ActiveRecord::Schema.define(version: 2020_04_05_031449) do
 
   create_table "queries", force: :cascade do |t|
     t.string "name"
@@ -18,4 +18,13 @@ ActiveRecord::Schema.define(version: 2020_04_05_031045) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.string "name"
+    t.integer "query_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["query_id"], name: "index_terms_on_query_id"
+  end
+
+  add_foreign_key "terms", "queries"
 end
