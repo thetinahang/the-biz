@@ -69,6 +69,11 @@ class QueriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def query_params
-      params.require(:query).permit(:name)
+      params.require(:query).permit(
+        :name,
+        terms_attributes: [
+          :name
+        ]
+      )
     end
 end
