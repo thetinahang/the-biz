@@ -1,3 +1,5 @@
+require 'lib/api'
+
 module Api
 
   class LastFm
