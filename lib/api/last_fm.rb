@@ -4,9 +4,17 @@ module Api
 
     include HTTParty
 
-    def self.get_response
+    class << self
+
+      def get_api
+        new
+      end 
+
+    end
+
+    def get_response
       response = HTTParty.get(build_auth_url)
-      response.body
+      JSON.parse(response.body) if response.present?
     end
 
     def build_auth_url
@@ -18,7 +26,7 @@ module Api
     end
 
     def api_key
-        ENV[“LASTFM_API_KEY”]
+        ENV['LASTFM_API_KEY']
     end  
   end
 
