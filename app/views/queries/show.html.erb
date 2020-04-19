@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @query.name %>
+  <strong>Query Name: </strong><%= @query.name %><br><br>
+  <strong>Query Terms:</strong>
   <ol>
 	  <% @query.terms.each do |term|%>
-	  	<li>Query name: <%= term.name %>; Query value: <%= term.value %></li>
+	  	<li>Query name: <%= term.name %><br>
+	  	Query value: <%= term.value %></li><br>
 	  <% end %>
   </ol>
 </p>
