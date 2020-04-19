@@ -12,6 +12,11 @@ module Api
 
     end
 
+    def initialize(type, value)
+      @type = type
+      @value = value
+    end
+
     def get_response
       response = HTTParty.get(lastfm_url)
       JSON.parse(response.body) if response.present?
@@ -20,15 +25,15 @@ module Api
     def lastfm_url
       # method example - method=artist.getsimilar
       # domain example - artist=cher
-      "http://ws.audioscrobbler.com/2.0/?#{method}&#{domain}&api_key=#{ENV['LASTFM_API_KEY']}&format=json"
+      "http://ws.audioscrobbler.com/2.0/?#{formatted_method}&#{formatted_domain}&api_key=#{ENV['LASTFM_API_KEY']}&format=json"
     end
 
-    def format_method(type)
-      "method=#{type}"
+    def formatted_method
+      "method=#{@type}"
     end
 
-    def format_domain(value)
-      "artist=#{value}"
+    def formatted_domain
+      "artist=#{@value}"
     end
 
   end

@@ -10,6 +10,8 @@ class TermsController < ApplicationController
   # GET /terms/1
   # GET /terms/1.json
   def show
+    api = Api::LastFm.get_api(@term.name, @term.value)
+    puts api.get_response
   end
 
   # GET /terms/new
@@ -64,6 +66,7 @@ class TermsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_term
+      binding.pry
       @term = Term.find(params[:id])
     end
 

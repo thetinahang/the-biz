@@ -66,10 +66,6 @@ class QueriesController < ApplicationController
     end
   end
 
-  def fetch_results(type, value)
-    api = Api::LastFm.get_api(type, value)
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_query

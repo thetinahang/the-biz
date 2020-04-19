@@ -6,7 +6,8 @@
   <ol>
 	  <% @query.terms.each do |term|%>
 	  	<li>Type: <%= term.name %><br>
-	  	Value: <%= term.value %></li><br>
+	  	Value: <%= term.value %></li>
+	  	<%= link_to "See Results", query_term_path(@query, term)%><br><br>
 	  <% end %>
   </ol>
 </p>
