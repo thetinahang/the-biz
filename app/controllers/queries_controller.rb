@@ -1,4 +1,5 @@
 class QueriesController < ApplicationController
+  include Api
   before_action :set_query, only: [:show, :edit, :update, :destroy]
 
   # GET /queries
@@ -63,6 +64,10 @@ class QueriesController < ApplicationController
       format.html { redirect_to queries_url, notice: 'Query was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def fetch_results(type, value)
+    api = Api::LastFm.get_api(type, value)
   end
 
   private

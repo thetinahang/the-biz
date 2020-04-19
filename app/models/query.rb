@@ -1,6 +1,6 @@
 class Query < ApplicationRecord
   QUERY_TYPES = %w[
-    getSimilar
+    artist.getSimilar
   ]
 
 	has_many :terms, dependent: :destroy

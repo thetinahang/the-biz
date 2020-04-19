@@ -6,8 +6,8 @@ module Api
 
     class << self
 
-      def get_api
-        new
+      def get_api(type, value)
+        new(type, value)
       end 
 
     end
@@ -18,7 +18,17 @@ module Api
     end
 
     def lastfm_url
-      "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=cher&api_key=#{ENV['LASTFM_API_KEY']}&format=json"
+      # method example - method=artist.getsimilar
+      # domain example - artist=cher
+      "http://ws.audioscrobbler.com/2.0/?#{method}&#{domain}&api_key=#{ENV['LASTFM_API_KEY']}&format=json"
+    end
+
+    def format_method(type)
+      "method=#{type}"
+    end
+
+    def format_domain(value)
+      "artist=#{value}"
     end
 
   end
