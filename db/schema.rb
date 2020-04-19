@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_031449) do
+ActiveRecord::Schema.define(version: 2020_04_19_200700) do
 
   create_table "queries", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_031449) do
     t.integer "query_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "value"
     t.index ["query_id"], name: "index_terms_on_query_id"
   end
 
