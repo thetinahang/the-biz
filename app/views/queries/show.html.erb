@@ -5,7 +5,7 @@
   <%= @query.name %>
   <ol>
 	  <% @query.terms.each do |term|%>
-	  	<li><%= term.name %></li>
+	  	<li>Query name: <%= term.name %>; Query value: <%= term.value %></li>
 	  <% end %>
   </ol>
 </p>

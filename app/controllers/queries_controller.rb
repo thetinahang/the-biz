@@ -77,7 +77,8 @@ class QueriesController < ApplicationController
         :name,
         terms_attributes: [
           :id,
-          :name
+          :name,
+          :value
         ]
       )
     end

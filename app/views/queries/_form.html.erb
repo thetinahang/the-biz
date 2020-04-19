@@ -4,8 +4,8 @@
 
   <h3>Query Terms:</h3>
   <%= f.fields_for :terms do |term| %>
-  	<%= select_tag(:name, options_for_select([['Lisbon', 1], ['Madrid', 2], ['Berlin', 3]], 2) %>
-    <%= term.text_field :name %><br>
+    <%= term.collection_select :name, Query::QUERY_TYPES, :to_s, :to_s %>
+    <%= term.text_field :value %><br>
   <% end %>
 
   <%= f.submit %>
