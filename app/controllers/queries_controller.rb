@@ -76,6 +76,7 @@ class QueriesController < ApplicationController
       params.require(:query).permit(
         :name,
         terms_attributes: [
+          :id,
           :name
         ]
       )
