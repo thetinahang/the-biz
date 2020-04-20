@@ -34,17 +34,27 @@ module Api
     end
 
     def formatted_domain
-      if @artist.include?(' ')
-        new_value = @artist.gsub(' ', '%20')
-      end
-
-      pattern = '^([^.]+)'
-      domain = @method.match(pattern)[0]
-      "#{domain}=#{new_value.present? ? new_value : @artist}"
+      artist = replace_spaces(@artist)
+      track = replace_spaces(@track)
+      check_domain(artist, track)
     end
 
-    def check_domain
-      # track needs method, artist and track
+    def replace_spaces(string)
+      if string.include?(' ')
+        new_value = string.gsub(' ', '%20')
+      end
+      new_value
+    end 
+
+    def check_domain(artist, track)
+      pattern = '^([^.]+)'
+      domain = @method.match(pattern)[0]
+
+      if domain == 'artist'
+        "#{domain}=#{artist}"
+      elsif domain == 'track'
+        "artist=#{artist}&#{domain}=#{track}"
+      end
     end
 
   end
