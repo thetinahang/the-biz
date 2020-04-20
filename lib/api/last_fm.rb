@@ -42,6 +42,8 @@ module Api
     def replace_spaces(string)
       if string.include?(' ')
         new_value = string.gsub(' ', '%20')
+      else
+        new_value = string
       end
       new_value
     end 
