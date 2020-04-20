@@ -1,8 +1,4 @@
 class Query < ApplicationRecord
-  QUERY_TYPES = %w[
-    artist.getSimilar
-  ]
-
 	has_many :terms, dependent: :destroy
 	accepts_nested_attributes_for :terms
 end

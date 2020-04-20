@@ -33,7 +33,13 @@ module Api
     end
 
     def formatted_domain
-      "artist=#{@value}"
+      if @value.include?(' ')
+        @value.gsub!(' ', '%20')
+      end
+
+      pattern = '^([^.]+)'
+      domain = @type.match(pattern)[0]
+      "#{domain}=#{@value}"
     end
 
   end

@@ -4,7 +4,7 @@
 
   <h3>Query Terms:</h3>
   <%= f.fields_for :terms do |term| %>
-    <%= term.collection_select :name, Query::QUERY_TYPES, :to_s, :to_s %>
+    <%= term.collection_select :name, Term::TYPES, :to_s, :to_s %>
     <%= term.text_field :value %><br>
   <% end %>
 
