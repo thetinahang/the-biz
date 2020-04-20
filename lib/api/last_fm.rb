@@ -6,15 +6,16 @@ module Api
 
     class << self
 
-      def get_api(type, value)
-        new(type, value)
+      def get_api(method, artist, track)
+        new(method, artist, track)
       end 
 
     end
 
-    def initialize(type, value)
-      @type = type
-      @value = value
+    def initialize(method, artist, track)
+      @method = method
+      @artist = artist
+      @track = track
     end
 
     def get_response
@@ -29,17 +30,21 @@ module Api
     end
 
     def formatted_method
-      "method=#{@type}"
+      "method=#{@method}"
     end
 
     def formatted_domain
-      if @value.include?(' ')
-        new_value = @value.gsub(' ', '%20')
+      if @artist.include?(' ')
+        new_value = @artist.gsub(' ', '%20')
       end
 
       pattern = '^([^.]+)'
-      domain = @type.match(pattern)[0]
-      "#{domain}=#{new_value.present? ? new_value : @value}"
+      domain = @method.match(pattern)[0]
+      "#{domain}=#{new_value.present? ? new_value : @artist}"
+    end
+
+    def check_domain
+      # track needs method, artist and track
     end
 
   end

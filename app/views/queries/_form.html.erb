@@ -3,10 +3,11 @@
   <%= f.text_field :name %><br>
 
   <h3>Query Terms:</h3>
+  <p>If picking an artist.* method, track data entry field will be omitted.</p>
   <%= f.fields_for :terms do |term| %>
-    <%= term.collection_select :method, Term::TYPES, :to_s, :to_s %>
+    Method: <%= term.collection_select :method, Term::TYPES, :to_s, :to_s %><br>
     Artist: <%= term.text_field :artist %><br>
-    Track: <%= term.text_field :track %><br>
+    Track: <%= term.text_field :track %><br><br>
   <% end %>
 
   <%= f.submit %>
