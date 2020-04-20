@@ -7,6 +7,11 @@ class Term < ApplicationRecord
     artist.getTopTags
     artist.getTopTracks
     artist.search
+    track.getInfo
+    track.getSimilar
+    track.getTags
+    track.getTopTags
+    track.search
   ]
 
   belongs_to :query
