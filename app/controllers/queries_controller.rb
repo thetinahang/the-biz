@@ -78,8 +78,9 @@ class QueriesController < ApplicationController
         :name,
         terms_attributes: [
           :id,
-          :name,
-          :value
+          :method,
+          :artist,
+          :track
         ]
       )
     end
