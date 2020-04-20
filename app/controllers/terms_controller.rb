@@ -11,7 +11,7 @@ class TermsController < ApplicationController
   # GET /terms/1.json
   def show
     api = Api::LastFm.get_api(@term.name, @term.value)
-    puts api.get_response
+    @result = api.get_response
   end
 
   # GET /terms/new

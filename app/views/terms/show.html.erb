@@ -10,5 +10,9 @@
   <%= @term.query_id %>
 </p>
 
+<span>
+	<%= @result %><br><br>
+</span>
+
 <%= link_to 'Edit', edit_query_path(@term.query) %> |
 <%= link_to 'Back', query_path(@term.query) %>
