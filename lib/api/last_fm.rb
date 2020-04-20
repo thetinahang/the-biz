@@ -34,12 +34,12 @@ module Api
 
     def formatted_domain
       if @value.include?(' ')
-        @value.gsub!(' ', '%20')
+        new_value = @value.gsub(' ', '%20')
       end
 
       pattern = '^([^.]+)'
       domain = @type.match(pattern)[0]
-      "#{domain}=#{@value}"
+      "#{domain}=#{new_value.present? ? new_value : @value}"
     end
 
   end
