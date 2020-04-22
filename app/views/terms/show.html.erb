@@ -21,7 +21,7 @@
 </p>
 
 <span>
-	<%= JSON.pretty_generate(@result) %><br><br>
+	<pre><%= JSON.pretty_generate(@result) %></pre><br><br>
 </span>
 
 <%= link_to 'Edit', edit_query_path(@term.query) %> |
