@@ -3,7 +3,27 @@
 This is a Ruby on Rails application that uses the Last FM api to get results based on search terms. 
 
 ## Installation instructions
-To load this app, git clone, run "bundle install", "rake db:migrate", and then "rails s" to start the server. Go to http://localhost:3000 in your favorite browser. You can start by creating a query and providing a name for the query. The query terms can be included at this time but you will be able to go back and edit accordingly. Hope you enjoy using this application!  
+To load this app, git clone, run "bundle install", "rake db:migrate", and then "rails s" to start the server. Go to http://localhost:3000 in your favorite browser. You can start by creating a query and providing a name for the query. The query terms can be included at this time but you will be able to go back and edit accordingly. Hope you enjoy using this application!
+
+## Further Execution Instructions
+- This application requires Ruby version 2.7.1 so please make sure you have that installed beforehand.
+- This will also require Rails version 6.0.2 or higher. Please install that as well. 
+- Run 'gem install bundler'. It is necessary for the next step.
+- This application comes with a Gemfile, providing the necessary gems (libraries) for running this application. Run 'bundle install'. Troubleshoot accordingly if not successful. 
+- Run 'rails s' to start the server. 
+- Once the server is up and running, go to localhost:3000 in your browser. 
+- You should see a page with 'Queries' at the very top. 
+- Click on 'New Query.'
+- You will see a form -- fill out what you want. 
+- Click on the saved query. 
+- Click on any of the 'See Results' for the entered search terms. 
+- You should see pretty-printed results in the form of JSON. 
+
+## Expected Input
+Input should be a selected method from the dropdown menu, a string of text for Artist, and/or a string of text for Track. 
+
+## Expected Output
+Pretty-printed JSON based on the query parameters set from input.
 
 # Contributing
 
