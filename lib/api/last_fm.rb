@@ -1,15 +1,13 @@
+# frozen_string_literal: true
+
 module Api
-
   class LastFm
-
     include HTTParty
 
     class << self
-
       def get_api(method, artist, track)
         new(method, artist, track)
-      end 
-
+      end
     end
 
     def initialize(method, artist, track)
@@ -40,13 +38,13 @@ module Api
     end
 
     def replace_spaces(string)
-      if string.include?(' ')
-        new_value = string.gsub(' ', '%20')
-      else
-        new_value = string
-      end
+      new_value = if string.include?(' ')
+                    string.gsub(' ', '%20')
+                  else
+                    string
+                  end
       new_value
-    end 
+    end
 
     def check_domain(artist, track)
       pattern = '^([^.]+)'
@@ -58,7 +56,5 @@ module Api
         "artist=#{artist}&#{domain}=#{track}"
       end
     end
-
   end
-
 end

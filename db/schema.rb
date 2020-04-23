@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,23 +12,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_010520) do
-
-  create_table "queries", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_200_420_010_520) do
+  create_table 'queries', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "terms", force: :cascade do |t|
-    t.string "method"
-    t.integer "query_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "artist"
-    t.string "track"
-    t.index ["query_id"], name: "index_terms_on_query_id"
+  create_table 'terms', force: :cascade do |t|
+    t.string 'method'
+    t.integer 'query_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'artist'
+    t.string 'track'
+    t.index ['query_id'], name: 'index_terms_on_query_id'
   end
 
-  add_foreign_key "terms", "queries"
+  add_foreign_key 'terms', 'queries'
 end

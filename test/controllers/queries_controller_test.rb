@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class QueriesControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class QueriesControllerTest < ActionDispatch::IntegrationTest
     @query = queries(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get queries_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_query_url
     assert_response :success
   end
 
-  test "should create query" do
+  test 'should create query' do
     assert_difference('Query.count') do
       post queries_url, params: { query: { name: @query.name } }
     end
@@ -23,22 +25,22 @@ class QueriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to query_url(Query.last)
   end
 
-  test "should show query" do
+  test 'should show query' do
     get query_url(@query)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_query_url(@query)
     assert_response :success
   end
 
-  test "should update query" do
+  test 'should update query' do
     patch query_url(@query), params: { query: { name: @query.name } }
     assert_redirected_to query_url(@query)
   end
 
-  test "should destroy query" do
+  test 'should destroy query' do
     assert_difference('Query.count', -1) do
       delete query_url(@query)
     end

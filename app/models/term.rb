@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Term < ApplicationRecord
   TYPES = %w[
     artist.getSimilar
@@ -12,7 +14,7 @@ class Term < ApplicationRecord
     track.getTags
     track.getTopTags
     track.search
-  ]
+  ].freeze
 
   belongs_to :query
 end

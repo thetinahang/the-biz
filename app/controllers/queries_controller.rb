@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class QueriesController < ApplicationController
   include Api
-  before_action :set_query, only: [:show, :edit, :update, :destroy]
+  before_action :set_query, only: %i[show edit update destroy]
 
   # GET /queries
   # GET /queries.json
@@ -10,21 +12,19 @@ class QueriesController < ApplicationController
 
   # GET /queries/1
   # GET /queries/1.json
-  def show
-  end
+  def show; end
 
   # GET /queries/new
   def new
     @query = Query.new
-    3.times do 
+    3.times do
       @term = @query.terms.build
     end
     @all_terms = []
   end
 
   # GET /queries/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /queries
   # POST /queries.json
@@ -67,21 +67,22 @@ class QueriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_query
-      @query = Query.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def query_params
-      params.require(:query).permit(
-        :name,
-        terms_attributes: [
-          :id,
-          :method,
-          :artist,
-          :track
-        ]
-      )
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_query
+    @query = Query.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def query_params
+    params.require(:query).permit(
+      :name,
+      terms_attributes: %i[
+        id
+        method
+        artist
+        track
+      ]
+    )
+  end
 end

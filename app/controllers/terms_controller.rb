@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TermsController < ApplicationController
-  before_action :set_term, only: [:show, :edit, :update, :destroy]
+  before_action :set_term, only: %i[show edit update destroy]
 
   # GET /terms
   # GET /terms.json
@@ -20,8 +22,7 @@ class TermsController < ApplicationController
   end
 
   # GET /terms/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /terms
   # POST /terms.json
@@ -64,13 +65,14 @@ class TermsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_term
-      @term = Term.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def term_params
-      params.require(:term).permit(:name, :query_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_term
+    @term = Term.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def term_params
+    params.require(:term).permit(:name, :query_id)
+  end
 end
