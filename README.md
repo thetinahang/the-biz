@@ -1,6 +1,6 @@
 # README
 
-This is a Ruby on Rails application that uses the Last FM api to get results based on search terms. 
+This is a Ruby on Rails application that uses the Last FM API to get results based on search terms. 
 
 ## Installation instructions
 To load this app, git clone, run "bundle install", "rake db:migrate", and then "rails s" to start the server. Go to http://localhost:3000 in your favorite browser. You can start by creating a query and providing a name for the query. The query terms can be included at this time but you will be able to go back and edit accordingly. Hope you enjoy using this application!
@@ -12,6 +12,9 @@ To load this app, git clone, run "bundle install", "rake db:migrate", and then "
 - This application comes with a Gemfile, providing the necessary gems (libraries) for running this application. Run 'bundle install'. Troubleshoot accordingly if not successful. 
 - Run 'gem install rake'.
 - Run 'rake db:migrate'.
+- Go to the Last FM developer webpage and get an API key.
+- Create an .env file in the root directory of this project. 
+- Save your API key as the LASTFM_API_KEY variable in this file.
 - Run 'rails s' to start the server. 
 - Once the server is up and running, go to localhost:3000 in your browser. 
 - You should see a page with 'Queries' at the very top. 
