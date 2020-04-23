@@ -10,6 +10,8 @@ To load this app, git clone, run "bundle install", "rake db:migrate", and then "
 - This will also require Rails version 6.0.2 or higher. Please install that as well. 
 - Run 'gem install bundler'. It is necessary for the next step.
 - This application comes with a Gemfile, providing the necessary gems (libraries) for running this application. Run 'bundle install'. Troubleshoot accordingly if not successful. 
+- Run 'gem install rake'.
+- Run 'rake db:migrate'.
 - Run 'rails s' to start the server. 
 - Once the server is up and running, go to localhost:3000 in your browser. 
 - You should see a page with 'Queries' at the very top. 
