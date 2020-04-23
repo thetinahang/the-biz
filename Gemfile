@@ -34,6 +34,7 @@ gem 'pry', '~> 0.12.2'
 gem 'loofah'
 gem 'pry-nav' 
 gem 'pry-byebug'
+gem 'rubocop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
