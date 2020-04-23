@@ -16,7 +16,7 @@ module Api
       @track = track
     end
 
-    def get_response
+    def fetch_response
       response = HTTParty.get(lastfm_url)
       JSON.parse(response.body) if response.present?
     end
@@ -24,7 +24,7 @@ module Api
     def lastfm_url
       # method example - method=artist.getsimilar
       # domain example - artist=cher
-      "http://ws.audioscrobbler.com/2.0/?#{formatted_method}&#{formatted_domain}&api_key=#{ENV['LASTFM_API_KEY']}&format=json"
+      "http://ws.audioscrobbler.com/2.0/?#{formatted_method}&#{formatted_domain}&api_key=#{ENV['LASTFM_API_KEY']}&format=json" # rubocop:disable Layout/LineLength
     end
 
     def formatted_method

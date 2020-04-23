@@ -13,7 +13,7 @@ class TermsController < ApplicationController
   # GET /terms/1.json
   def show
     api = Api::LastFm.get_api(@term.method, @term.artist, @term.track)
-    @result = api.get_response
+    @result = api.fetch_response
   end
 
   # GET /terms/new
