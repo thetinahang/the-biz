@@ -15,7 +15,7 @@ class QueriesController < ApplicationController
     if @query
       render :show
     else
-      redirect_to user_queries_path, flash: {notice: "Unauthorized"}
+      redirect_to user_queries_path, flash: { notice: 'Unauthorized' }
     end
   end
 

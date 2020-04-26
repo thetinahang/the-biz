@@ -6,8 +6,12 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @query = Query.find(params[:query_id])
-    @terms = @query.terms
+    @query = Query.find_by(user_id: params[:user_id], id: params[:query_id])
+    if @query
+      @terms = @query.terms
+    else
+      redirect_to user_queries_path, flash: { notice: 'Unauthorized' }
+    end
   end
 
   # GET /terms/1
@@ -21,7 +25,7 @@ class TermsController < ApplicationController
       api = Api::LastFm.get_api(@term.method, @term.artist, @term.track)
       @result = api.fetch_response
     else
-      redirect_to user_queries_path, flash: {notice: "Unauthorized"}
+      redirect_to user_queries_path, flash: { notice: 'Unauthorized' }
     end
   end
 
