@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'welcome', to: 'sessions#welcome'
   get 'authorized', to: 'sessions#page_requires_login'
   get '/logout', to: 'sessions#destroy'
-  
+
   resources :users, only: %i[new create] do
     resources :queries do
       resources :terms
