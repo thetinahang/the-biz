@@ -11,7 +11,13 @@ class QueriesController < ApplicationController
 
   # GET /queries/1
   # GET /queries/1.json
-  def show; end
+  def show
+    if @query
+      render :show
+    else
+      render :index
+    end
+  end
 
   # GET /queries/new
   def new
