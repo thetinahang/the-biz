@@ -4,6 +4,8 @@
 
   <h3>Query Terms:</h3>
   <p>If picking an artist.* method, track data entry field will be omitted.</p>
+  <p>If picking an track.* method, be aware that it may required an artist so please input one if known.</p>
+  <br>
   <%= f.fields_for :terms do |term| %>
     Method: <%= term.collection_select :method, Term::TYPES, :to_s, :to_s %><br>
     Artist: <%= term.text_field :artist %><br>
