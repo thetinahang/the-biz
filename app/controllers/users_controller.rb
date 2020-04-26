@@ -8,12 +8,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email])
-    if @user&.authenticate(params[:password])
-      sessions[:user_id] = @user.id
-      redirect_to '/welcome'
-    else
-      redirect_to '/login'
-    end
+     @user = User.create(params.require(:user).permit(:email,        
+     :password))
+     session[:user_id] = @user.id
+     redirect_to '/welcome'
   end
 end

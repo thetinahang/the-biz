@@ -6,7 +6,7 @@ class QueriesController < ApplicationController
   # GET /queries
   # GET /queries.json
   def index
-    @queries = Query.all
+    @queries = @user.queries.all
   end
 
   # GET /queries/1
@@ -15,7 +15,7 @@ class QueriesController < ApplicationController
 
   # GET /queries/new
   def new
-    @query = Query.new
+    @query = @user.queries.build
     3.times do
       @term = @query.terms.build
     end
@@ -75,6 +75,7 @@ class QueriesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def query_params
     params.require(:query).permit(
+      :user_id,
       :name,
       terms_attributes: %i[
         id

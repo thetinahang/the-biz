@@ -24,4 +24,5 @@
 
 <br>
 
-<%= link_to 'New Query', new_query_path %>
+<%= link_to 'New Query', new_user_query_path(@user.id) %> |
+<%= link_to "Log Out", '/logout', method: :get if logged_in?%>
