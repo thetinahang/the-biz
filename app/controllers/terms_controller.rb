@@ -17,8 +17,12 @@ class TermsController < ApplicationController
   # The LastFM api is called here with the parameters
   # from the terms of the query.
   def show
-    api = Api::LastFm.get_api(@term.method, @term.artist, @term.track)
-    @result = api.fetch_response
+    if @term
+      api = Api::LastFm.get_api(@term.method, @term.artist, @term.track)
+      @result = api.fetch_response
+    else
+      redirect_to user_queries_path, flash: {notice: "Unauthorized"}
+    end
   end
 
   # GET /terms/new
@@ -73,7 +77,7 @@ class TermsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_term
-    @term = Term.find(params[:id])
+    @term = Term.find_by(query_id: params[:query_id], id: params[:id])
   end
 
   # Only allow a list of trusted parameters through.
