@@ -1,4 +1,5 @@
-<%= form_for @query do |f| %>
+<%= form_for [@user, @query] do |f| %>
+  <%= f.hidden_field :user_id, value: @user.id %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
 

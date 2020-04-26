@@ -10,10 +10,10 @@
 	  		Artist: <%= term.artist %><br>
 	  		Track: <%= term.track %><br>
 	  	</li>
-	  	<%= link_to "See Results", query_term_path(@query, term)%><br><br>
+	  	<%= link_to "See Results", user_query_term_path(@user, @query, term)%><br><br>
 	  <% end %>
   </ol>
 </p>
 
-<%= link_to 'Edit', edit_query_path(@query) %> |
+<%= link_to 'Edit', edit_user_query_path(@user, @query) %> |
 <%= link_to 'Back', user_queries_path(@user) %>

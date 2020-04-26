@@ -1,6 +1,6 @@
 <h1>Editing Query</h1>
 
-<%= render 'form', query: @query %>
+<%= render 'form', query: @query, user: @user %>
 
-<%= link_to 'Show', @query %> |
+<%= link_to 'Show', user_query_path(@user, @query) %> |
 <%= link_to 'Back', user_queries_path(@user) %>

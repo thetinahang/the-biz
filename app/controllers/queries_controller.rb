@@ -32,7 +32,7 @@ class QueriesController < ApplicationController
 
     respond_to do |format|
       if @query.save
-        format.html { redirect_to @query, notice: 'Query was successfully created.' }
+        format.html { redirect_to user_query_path(@user, @query), notice: 'Query was successfully created.' }
         format.json { render :show, status: :created, location: @query }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class QueriesController < ApplicationController
   def update
     respond_to do |format|
       if @query.update(query_params)
-        format.html { redirect_to @query, notice: 'Query was successfully updated.' }
+        format.html { redirect_to user_query_path(@user, @query), notice: 'Query was successfully updated.' }
         format.json { render :show, status: :ok, location: @query }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class QueriesController < ApplicationController
   def destroy
     @query.destroy
     respond_to do |format|
-      format.html { redirect_to queries_url, notice: 'Query was successfully destroyed.' }
+      format.html { redirect_to user_queries_path(@user), notice: 'Query was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,7 +69,7 @@ class QueriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_query
-    @query = Query.find(params[:id])
+    @query = Query.find_by(id: params[:id], user_id: params[:user_id])
   end
 
   # Only allow a list of trusted parameters through.
