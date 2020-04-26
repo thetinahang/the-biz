@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
   get 'authorized', to: 'sessions#page_requires_login'
-  resources :users, only: [:new, :create]
+  resources :users, only: %i[new create]
   resources :queries do
     resources :terms
   end

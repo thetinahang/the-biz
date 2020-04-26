@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This module provides the formatting and connection
-# to the LastFM api. 
+# to the LastFM api.
 module Api
   class LastFm
     include HTTParty # To make HTTP requests.
@@ -26,9 +26,9 @@ module Api
       JSON.parse(response.body) if response.present?
     end
 
-    ## Format URL before placing in GET request. 
+    ## Format URL before placing in GET request.
     # API Key has to be obtained beforehand.
-    # Output will be in json format by default. 
+    # Output will be in json format by default.
     def lastfm_url
       "http://ws.audioscrobbler.com/2.0/?#{formatted_method}&#{formatted_domain}&api_key=#{ENV['LASTFM_API_KEY']}&format=json" # rubocop:disable Layout/LineLength
     end
@@ -58,13 +58,13 @@ module Api
     end
 
     # For any artist methods, the artist param is required.
-    # For some of the track methods, the artist param 
+    # For some of the track methods, the artist param
     # may not be required but is preferred. So the method
     # will include the artist as a query param in the URL.
     #
     # Takes two 'cleaned' strings for artist and track
     # and returns the appropriate domain to be inserted
-    # into the URL. 
+    # into the URL.
     def check_domain(artist, track)
       pattern = '^([^.]+)'
       domain = @method.match(pattern)[0]
