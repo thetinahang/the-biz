@@ -6,7 +6,8 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.json
   def index
-    @terms = Term.all
+    @query = Query.find(params[:query_id])
+    @terms = @query.terms
   end
 
   # GET /terms/1
