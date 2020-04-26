@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  skip_before_action :authorized, only: [:new, :create, :welcome]
+
   def new; end
 
   def create
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
       sessions[:user_id] = @user.id
-      redirect_to '/welcome'
+      redirect_to user_queries_path(@user)
     else
       redirect_to '/login'
     end

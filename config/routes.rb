@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'welcome', to: 'sessions#welcome'
   get 'authorized', to: 'sessions#page_requires_login'
-  resources :users, only: %i[new create]
-  resources :queries do
-    resources :terms
+  resources :users, only: %i[new create] do
+    resources :queries do
+      resources :terms
+    end
   end
-  root 'queries#index'
+  root 'sessions#welcome'
+  #root 'queries#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
