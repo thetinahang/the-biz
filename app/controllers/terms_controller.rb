@@ -11,6 +11,10 @@ class TermsController < ApplicationController
 
   # GET /terms/1
   # GET /terms/1.json
+  # 
+  # Returns json response for this route
+  # The LastFM api is called here with the parameters
+  # from the terms of the query. 
   def show
     api = Api::LastFm.get_api(@term.method, @term.artist, @term.track)
     @result = api.fetch_response

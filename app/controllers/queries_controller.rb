@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class QueriesController < ApplicationController
-  include Api
   before_action :set_query, only: %i[show edit update destroy]
 
   # GET /queries
