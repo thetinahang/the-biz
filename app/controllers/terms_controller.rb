@@ -3,8 +3,7 @@
 class TermsController < ApplicationController
   before_action :set_term, only: %i[show edit update destroy]
 
-  # GET /terms
-  # GET /terms.json
+  # GET /users/:user_id//queries/:query_id/terms
   def index
     @query = Query.find_by(user_id: params[:user_id], id: params[:query_id])
     if @query
@@ -14,8 +13,7 @@ class TermsController < ApplicationController
     end
   end
 
-  # GET /terms/1
-  # GET /terms/1.json
+  # GET /users/:user_id//queries/:query_id/terms
   #
   # Returns json response for this route
   # The LastFM api is called here with the parameters
@@ -29,16 +27,16 @@ class TermsController < ApplicationController
     end
   end
 
-  # GET /terms/new
+  # GET /users/:user_id//queries/:query_id/terms/new
   def new
     @term = Term.new
   end
 
-  # GET /terms/1/edit
+  # GET /users/:user_id//queries/:query_id/terms/:term_id/edit
   def edit; end
 
-  # POST /terms
-  # POST /terms.json
+  # POST /users/:user_id//queries/:query_id/terms
+  # POST /users/:user_id//queries/:query_id/terms.json
   def create
     @term = Term.new(term_params)
 
@@ -53,8 +51,8 @@ class TermsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /terms/1
-  # PATCH/PUT /terms/1.json
+  # PATCH/PUT /users/:user_id//queries/:query_id/terms/:term_id
+  # PATCH/PUT /users/:user_id//queries/:query_id/terms/:term_id.json
   def update
     respond_to do |format|
       if @term.update(term_params)
@@ -67,8 +65,8 @@ class TermsController < ApplicationController
     end
   end
 
-  # DELETE /terms/1
-  # DELETE /terms/1.json
+  # DELETE /users/:user_id//queries/:query_id/terms/:term_id
+  # DELETE /users/:user_id//queries/:query_id/terms/:term_id.json
   def destroy
     @term.destroy
     respond_to do |format|

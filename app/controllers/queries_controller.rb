@@ -3,14 +3,12 @@
 class QueriesController < ApplicationController
   before_action :set_query, only: %i[show edit update destroy]
 
-  # GET /queries
-  # GET /queries.json
+  # GET /users/:user_id/queries
   def index
     @queries = @user.queries.all
   end
 
-  # GET /queries/1
-  # GET /queries/1.json
+  # GET /users/:user_id/queries/1
   def show
     if @query
       render :show
@@ -19,7 +17,7 @@ class QueriesController < ApplicationController
     end
   end
 
-  # GET /queries/new
+  # GET /users/:user_id/queries/new
   def new
     @query = @user.queries.build
     3.times do
@@ -28,11 +26,10 @@ class QueriesController < ApplicationController
     @all_terms = []
   end
 
-  # GET /queries/1/edit
+  # GET /users/:user_id/queries/:query_id/edit
   def edit; end
 
-  # POST /queries
-  # POST /queries.json
+  # POST /users/:user_id/queries
   def create
     @query = Query.new(query_params)
 
@@ -47,8 +44,7 @@ class QueriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /queries/1
-  # PATCH/PUT /queries/1.json
+  # PATCH/PUT /users/:user_id/queries/:query_id
   def update
     respond_to do |format|
       if @query.update(query_params)
@@ -61,8 +57,8 @@ class QueriesController < ApplicationController
     end
   end
 
-  # DELETE /queries/1
-  # DELETE /queries/1.json
+  # DELETE /users/:user_id//queries/:query_id
+  # DELETE /users/:user_id//queries/:query_id.json
   def destroy
     @query.destroy
     respond_to do |format|
