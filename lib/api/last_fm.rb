@@ -26,7 +26,7 @@ module Api
       if response.present?
         JSON.parse(response.body)
       else
-        "No results. Please change the search terms."
+        'No results. Please change the search terms.'
       end
     end
 
