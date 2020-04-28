@@ -23,7 +23,11 @@ module Api
     ## with the desired params and API key.
     def fetch_response
       response = HTTParty.get(lastfm_url)
-      JSON.parse(response.body) if response.present?
+      if response.present?
+        JSON.parse(response.body)
+      else
+        "No results. Please change the search terms."
+      end
     end
 
     ## Format URL before placing in GET request.
