@@ -25,6 +25,8 @@
 	<strong>Results: </strong><br><br>
   <% if @result.is_a?(Hash) && @result['error'].present? %>
     <%= @result['message'] %><br><br>
+  <% elsif @result.is_a?(Hash) && @result.present? %>
+    <%= @result['results'] %><br>
   <% elsif @result.is_a?(Hash) && @result['similarartists'].present? %>
     <% @result['similarartists']['artist'].each do |artist| %>
       Name: <%= artist['name'] %><br>
