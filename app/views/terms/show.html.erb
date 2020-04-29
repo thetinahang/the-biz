@@ -22,8 +22,55 @@
 
 
 <span>
-	<strong>Results: </strong>
-	<pre><%= JSON.pretty_generate(@result) %></pre><br><br>
+	<strong>Results: </strong><br><br>
+  <% if @result.is_a?(Hash) && @result['error'].present? %>
+    <%= @result['message'] %><br><br>
+  <% elsif @result.is_a?(Hash) && @result['similarartists'].present? %>
+    <% @result['similarartists']['artist'].each do |artist| %>
+      Name: <%= artist['name'] %><br>
+      Url for more info: <%= link_to artist['url'], artist['url'] %><br><br>
+    <% end %>
+  <% elsif @result.is_a?(Hash) && @result['artist'].present? %>
+      Name: <%= @result['artist']['name'] %><br><br>
+      Content: <%= @result['artist']['bio']['content'] %><br><br>
+      Url for more info: <%= link_to @result['artist']['url'], @result['artist']['url'] %><br><br>
+  <% elsif @result.is_a?(Hash) && @result['topalbums'].present? %>
+    <% @result['topalbums']['album'].each do |album| %>
+      Name: <%= album['name'] %><br>
+      Url for more info: <%= link_to album['url'], album['url'] %><br><br>
+    <% end %>
+  <% elsif @result.is_a?(Hash) && @result['toptags'].present? %>
+    <% @result['toptags']['tag'].each do |tag| %>
+      Name: <%= tag['name'] %><br>
+      Url for more info: <%= link_to tag['url'], tag['url'] %><br><br>
+    <% end %>
+  <% elsif @result.is_a?(Hash) && @result['toptracks'].present? %>
+    <% @result['toptracks']['track'].each do |track| %>
+      Name: <%= track['name'] %><br>
+      Url for more info: <%= link_to track['url'], track['url'] %><br><br>
+    <% end %>
+  <% elsif @result.is_a?(Hash) && @result['results']['artistmatches'].present? %>
+    <% @result['results']['artistmatches']['artist'].each do |artist| %>
+      Name: <%= artist['name'] %><br>
+      Url for more info: <%= link_to artist['url'], artist['url'] %><br><br>
+    <% end %>
+  <% elsif @result.is_a?(Hash) && @result['results']['trackmatches'].present? %>
+    <% @result['results']['trackmatches']['track'].each do |track| %>
+      Name: <%= track['name'] %><br>
+      Url for more info: <%= link_to track['url'], track['url'] %><br><br>
+    <% end %>
+  <% elsif @result.is_a?(Hash) && @result['similartracks'].present? %>
+    <% @result['similartracks']['track'].each do |track| %>
+      Name: <%= track['name'] %><br>
+      Artist: <%= track['artist'] %><br>
+      Url for more info: <%= link_to track['url'], track['url'] %><br><br>
+    <% end %>
+  <% elsif @result.is_a?(Hash) && @result['error'].present? %>
+    Name: <%= track['name'] %><br>
+  <% else %>
+    <pre><%= JSON.pretty_generate(@result) %></pre><br><br>
+  <% end %>
+
 </span>
 
 <%= link_to 'Edit', edit_user_query_path(@user, @term.query) %> |
