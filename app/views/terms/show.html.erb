@@ -25,8 +25,7 @@
 	<strong>Results: </strong><br><br>
   <% if @result.is_a?(Hash) && @result['error'].present? %>
     <%= @result['message'] %><br><br>
-  <% elsif @result.is_a?(Hash) && @result.present? %>
-    <%= @result['results'] %><br>
+
   <% elsif @result.is_a?(Hash) && @result['similarartists'].present? %>
     <% @result['similarartists']['artist'].each do |artist| %>
       Name: <%= artist['name'] %><br>
@@ -36,6 +35,10 @@
       Name: <%= @result['artist']['name'] %><br><br>
       Content: <%= @result['artist']['bio']['content'] %><br><br>
       Url for more info: <%= link_to @result['artist']['url'], @result['artist']['url'] %><br><br>
+  <% elsif @result.is_a?(Hash) && @result['track'].present? %>
+      Name: <%= @result['track']['name'] %><br>
+      Artist: <%= @result['track']['artist']['name'] %><br>
+      Url for more info: <%= link_to @result['track']['url'], @result['track']['url'] %><br><br>
   <% elsif @result.is_a?(Hash) && @result['topalbums'].present? %>
     <% @result['topalbums']['album'].each do |album| %>
       Name: <%= album['name'] %><br>
@@ -51,20 +54,22 @@
       Name: <%= track['name'] %><br>
       Url for more info: <%= link_to track['url'], track['url'] %><br><br>
     <% end %>
-  <% elsif @result.is_a?(Hash) && @result['results']['artistmatches'].present? %>
-    <% @result['results']['artistmatches']['artist'].each do |artist| %>
-      Name: <%= artist['name'] %><br>
-      Url for more info: <%= link_to artist['url'], artist['url'] %><br><br>
-    <% end %>
-  <% elsif @result.is_a?(Hash) && @result['results']['trackmatches'].present? %>
-    <% @result['results']['trackmatches']['track'].each do |track| %>
-      Name: <%= track['name'] %><br>
-      Url for more info: <%= link_to track['url'], track['url'] %><br><br>
+  <% elsif @result.is_a?(Hash) && @result['results'].present? %>
+    <% if @result['results']['artistmatches'].present? %>
+      <% @result['results']['artistmatches']['artist'].each do |artist| %>
+        Name: <%= artist['name'] %><br>
+        Url for more info: <%= link_to artist['url'], artist['url'] %><br><br>
+      <% end %>
+    <% elsif @result['results']['trackmatches'].present? %>
+      <% @result['results']['trackmatches']['track'].each do |track| %>
+        Name: <%= track['name'] %><br>
+        Url for more info: <%= link_to track['url'], track['url'] %><br><br>
+      <% end %>
     <% end %>
   <% elsif @result.is_a?(Hash) && @result['similartracks'].present? %>
     <% @result['similartracks']['track'].each do |track| %>
       Name: <%= track['name'] %><br>
-      Artist: <%= track['artist'] %><br>
+      Artist: <%= track['artist']['name'] %><br>
       Url for more info: <%= link_to track['url'], track['url'] %><br><br>
     <% end %>
   <% elsif @result.is_a?(Hash) && @result['error'].present? %>
